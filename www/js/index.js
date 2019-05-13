@@ -58,7 +58,7 @@ var app = {
 function loadXMLDoc(){
 	//2 - Recepción de la llamada
 	var xmlhttp=new XMLHttpRequest();
-	var sharedPreferences = window.plugins.SharedPreferences.getInstance("Login");
+	var sharedPreferences = nuevo.plugins.SharedPreferences.getInstance("Login");
 	var successCallback = function() {
     	console.log('OK');
 	}
@@ -84,6 +84,8 @@ function loadXMLDoc(){
 			//localStorage.setItem("Usuario", user);
 			//localStorage.setItem("Clave", pass);
 			//loadHTML("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass,10000);
+			navigator.app.loadUrl("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, { openExternal:true });
+
 			}
 		}
 	}
