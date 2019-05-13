@@ -84,7 +84,7 @@ function loadXMLDoc(){
 			//localStorage.setItem("Usuario", user);
 			//localStorage.setItem("Clave", pass);
 			//loadHTML("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass,10000);
-			window.open("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, "_blank");
+			window.open("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, "_blank", "location=no");
 
 			}
 		}
