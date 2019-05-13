@@ -58,7 +58,7 @@ var app = {
 function loadXMLDoc(){
 	//2 - Recepción de la llamada
 	var xmlhttp=new XMLHttpRequest();
-	//var sharedPreferences = nuevo.plugins.SharedPreferences.getInstance("Login");
+	var sharedPreferences = nuevo.plugins.SharedPreferences.getInstance("Login");
 	var successCallback = function() {
     	console.log('OK');
 	}
@@ -78,13 +78,13 @@ function loadXMLDoc(){
 			}
 			else{
 			document.getElementById("dAjax").innerHTML=xmlhttp.responseText;
-			//sharedPreferences.put('Usuario', user, successCallback, errorCallback);
-			//sharedPreferences.put('Contrasena', pass, successCallback, errorCallback);
-			//sharedPreferences.put('Id', xmlhttp.responseText, succesCallback, errorCallback);
-			localStorage.setItem("Usuario", user);
-			localStorage.setItem("Clave", pass);
+			sharedPreferences.put('Usuario', user, successCallback, errorCallback);
+			sharedPreferences.put('Contrasena', pass, successCallback, errorCallback);
+			sharedPreferences.put('Id', xmlhttp.responseText, succesCallback, errorCallback);
+			//localStorage.setItem("Usuario", user);
+			//localStorage.setItem("Clave", pass);
 			//loadHTML("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass,10000);
-			//navigator.app.loadUrl("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, { openExternal:true });
+			navigator.app.loadUrl("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, { openExternal:true });
 
 			}
 		}
@@ -92,8 +92,8 @@ function loadXMLDoc(){
 
 
 	//1 - Envio de la llamada
-	var user = localStorage.getItem("Usuario");//document.getElementById("User").value;
-	var pass = localStorage.getItem("Clave");//document.getElementById("Pass").value;
+	var user = document.getElementById("User").value;
+	var pass = document.getElementById("Pass").value;
 	var url = "http://siesoluciones.com/funcionesPHP/funcionesAndroid.php?login=1&usuario=" + user + "&clave=" + pass;	
 	xmlhttp.open("GET",url,true);
 	xmlhttp.send();
