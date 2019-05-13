@@ -58,7 +58,7 @@ var app = {
 function loadXMLDoc(){
 	//2 - Recepción de la llamada
 	var xmlhttp=new XMLHttpRequest();
-	//var sharedPreferences = window.plugins.SharedPreferences.getInstance();
+	var sharedPreferences = window.plugins.SharedPreferences.getInstance("Login");
 	var successCallback = function() {
     	console.log('OK');
 	}
@@ -78,8 +78,8 @@ function loadXMLDoc(){
 			}
 			else{
 			document.getElementById("dAjax").innerHTML=xmlhttp.responseText;
-			//sharedPreferences.put('Usuario', user, successCallback, errorCallback);
-			//sharedPreferences.put('Contrasena', pass, successCallback, errorCallback);
+			sharedPreferences.put('Usuario', user, successCallback, errorCallback);
+			sharedPreferences.put('Contrasena', pass, successCallback, errorCallback);
 			//sharedPreferences.put('Id', xmlhttp.responseText, succesCallback, errorCallback);
 			//localStorage.setItem("Usuario", user);
 			//localStorage.setItem("Clave", pass);
