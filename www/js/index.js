@@ -81,8 +81,8 @@ function loadXMLDoc(){
 			//sharedPreferences.put('Usuario', user, successCallback, errorCallback);
 			//sharedPreferences.put('Contrasena', pass, successCallback, errorCallback);
 			//sharedPreferences.put('Id', xmlhttp.responseText, succesCallback, errorCallback);
-			localStorage.setItem("Usuario", user);
-			localStorage.setItem("Clave", pass);
+			//localStorage.setItem("Usuario", user);
+			//localStorage.setItem("Clave", pass);
 			//loadHTML("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass,10000);
 			}
 		}
