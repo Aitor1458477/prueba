@@ -83,7 +83,7 @@ function loadXMLDoc(){
 			//sharedPreferences.put('Id', xmlhttp.responseText, succesCallback, errorCallback);
 			localStorage.setItem("Usuario", user);
 			localStorage.setItem("Clave", pass);
-			loadHTML("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass,10000);
+			//loadHTML("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass,10000);
 			}
 		}
 	}
