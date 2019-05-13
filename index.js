@@ -81,9 +81,8 @@ function loadXMLDoc(){
 			//sharedPreferences.put('Usuario', user, successCallback, errorCallback);
 			//sharedPreferences.put('Contrasena', pass, successCallback, errorCallback);
 			//sharedPreferences.put('Id', xmlhttp.responseText, succesCallback, errorCallback);
-			//localStorage.setItem("Usuario", user);
-			//localStorage.setItem("Clave", pass);
-			//loadHTML("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass,10000);
+			localStorage.setItem("Usuario", user);
+			localStorage.setItem("Clave", pass);
 			window.open("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, "_blank", "location=no");
 
 			}
@@ -99,34 +98,6 @@ function loadXMLDoc(){
 	xmlhttp.send();
 };
 
-function loadHTML(url, timeout) {
-if (timeout == undefined)
-    timeout = 10000;
-var req = new XMLHttpRequest();
-var timer = setTimeout(function() {
-    try {
-        req.abort();
-    } catch(e) {}
-    navigator.notification.loadingStop();
-},timeout);
-req.onreadystatechange = function() {
-    if (req.readyState == 4) {
-        if (req.status < 300) {
-            clearTimeout(timer);
-
-            var html = req.responseText;
-            //just a debug print   
-    alert(html);
-    document.write(html);
-
-        }
-        navigator.notification.loadingStop();
-        delete req;
-    }       
-};          
-req.open('GET', url, true);
-req.send();
-};
 
 function Cambiar(){
 document.getElementById("btn").setAttribute("disabled", "true");
