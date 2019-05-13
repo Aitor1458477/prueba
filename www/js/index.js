@@ -58,7 +58,7 @@ var app = {
 function loadXMLDoc(){
 	//2 - Recepción de la llamada
 	var xmlhttp=new XMLHttpRequest();
-	//var sharedPreferences = window.plugins.SharedPreferences.getInstance();
+	//var sharedPreferences = nuevo.plugins.SharedPreferences.getInstance("Login");
 	var successCallback = function() {
     	console.log('OK');
 	}
@@ -83,15 +83,17 @@ function loadXMLDoc(){
 			//sharedPreferences.put('Id', xmlhttp.responseText, succesCallback, errorCallback);
 			localStorage.setItem("Usuario", user);
 			localStorage.setItem("Clave", pass);
-			loadHTML("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass,10000);
+			//loadHTML("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass,10000);
+			//navigator.app.loadUrl("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, { openExternal:true });
+
 			}
 		}
 	}
 
 
 	//1 - Envio de la llamada
-	var user = document.getElementById("User").value;
-	var pass = document.getElementById("Pass").value;
+	var user = localStorage.getItem("Usuario");//document.getElementById("User").value;
+	var pass = localStorage.getItem("Clave");//document.getElementById("Pass").value;
 	var url = "http://siesoluciones.com/funcionesPHP/funcionesAndroid.php?login=1&usuario=" + user + "&clave=" + pass;	
 	xmlhttp.open("GET",url,true);
 	xmlhttp.send();
@@ -125,6 +127,11 @@ req.onreadystatechange = function() {
 req.open('GET', url, true);
 req.send();
 };
+
+function Cambiar(){
+document.getElementById("btn").setAttribute("disabled", "true");
+
+}
 
 
 
