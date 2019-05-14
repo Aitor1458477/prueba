@@ -33,7 +33,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+        Automatico();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -99,9 +99,12 @@ function loadXMLDoc(){
 };
 
 
-function Cambiar(){
-document.getElementById("btn").setAttribute("disabled", "true");
-
+function Automatico(){
+	var user = localStorage.getItem("Usuario");
+	var pass = localStorage.getItem("Clave");
+	if(user!=null && pass!=null){
+		window.open("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, "_blank", "location=no");
+	}
 }
 
 
