@@ -83,6 +83,7 @@ function loadXMLDoc(){
 			//sharedPreferences.put('Id', xmlhttp.responseText, succesCallback, errorCallback);
 			localStorage.setItem("Usuario", user);
 			localStorage.setItem("Clave", pass);
+			localStorage.setItem("Id", xmlhttp.responseText)
 			window.open("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, "_blank", "location=no");
 
 			}
@@ -105,8 +106,37 @@ function Automatico(){
 	if(user!=null && pass!=null){
 		window.open("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, "_blank", "location=no");
 	}
-}
+};
 
+var FCMPlugin= {
+FCMPlugin.getToken(function(token) {
+	var xmlhttp=new XMLHttpRequest();
+	var id = localStorage.getItem("Id"); 
+	var url = "https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+token;	
+
+
+    //this is the fcm token which can be used
+    //to send notification to specific device 
+    console.log(token);
+    xmlhttp.open("GET",url,true);
+	xmlhttp.send();
+
+    FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) )
+    //Here you define your application behaviour based on the notification data.
+    FCMPlugin.onNotification(function(data) {
+        console.log(data);
+        //data.wasTapped == true means in Background :  Notification was received on device tray and tapped by the user.
+        //data.wasTapped == false means in foreground :  Notification was received in foreground. Maybe the user needs to be notified.
+         if (data.wasTapped) {
+        //     //Notification was received on device tray and tapped by the user.
+             alert(JSON.stringify(data));
+         } else {
+        //     //Notification was received in foreground. Maybe the user needs to be notified.
+             alert(JSON.stringify(data));
+         }
+    });
+});
+};
 
 
 
