@@ -46,7 +46,7 @@ var app = {
     /*xmlhttp.open("GET",url,true);
 	xmlhttp.send();*/
 
-    FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) );
+    //FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) );
     //Here you define your application behaviour based on the notification data.
     FCMPlugin.onNotification(function(data) {
         console.log(data);
