@@ -135,9 +135,6 @@ function Automatico(){
 	}
 };
 
-var FCMPlugin= {
-});
-};
 
 
 
