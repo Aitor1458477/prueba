@@ -108,7 +108,7 @@ function Automatico(){
 	}
 };
 
-var FCMPlugin= {
+/*var FCMPlugin= {
 FCMPlugin.getToken(function(token) {
 	var xmlhttp=new XMLHttpRequest();
 	var id = localStorage.getItem("Id"); 
@@ -136,7 +136,7 @@ FCMPlugin.getToken(function(token) {
          }
     });
 });
-};
+};*/
 
 
 
