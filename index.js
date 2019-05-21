@@ -34,6 +34,33 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         Automatico();
+        FCMPlugin.getToken(function(token) {
+	var xmlhttp=new XMLHttpRequest();
+	var id = localStorage.getItem("Id"); 
+	var url = "https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+token;	
+
+
+    //this is the fcm token which can be used
+    //to send notification to specific device 
+    console.log(token);
+    xmlhttp.open("GET",url,true);
+	xmlhttp.send();
+
+    FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) )
+    //Here you define your application behaviour based on the notification data.
+    FCMPlugin.onNotification(function(data) {
+        console.log(data);
+        //data.wasTapped == true means in Background :  Notification was received on device tray and tapped by the user.
+        //data.wasTapped == false means in foreground :  Notification was received in foreground. Maybe the user needs to be notified.
+         if (data.wasTapped) {
+        //     //Notification was received on device tray and tapped by the user.
+             alert(JSON.stringify(data));
+         } else {
+        //     //Notification was received in foreground. Maybe the user needs to be notified.
+             alert(JSON.stringify(data));
+         }
+    });
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -109,32 +136,6 @@ function Automatico(){
 };
 
 var FCMPlugin= {
-FCMPlugin.getToken(function(token) {
-	var xmlhttp=new XMLHttpRequest();
-	var id = localStorage.getItem("Id"); 
-	var url = "https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+token;	
-
-
-    //this is the fcm token which can be used
-    //to send notification to specific device 
-    console.log(token);
-    xmlhttp.open("GET",url,true);
-	xmlhttp.send();
-
-    FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) )
-    //Here you define your application behaviour based on the notification data.
-    FCMPlugin.onNotification(function(data) {
-        console.log(data);
-        //data.wasTapped == true means in Background :  Notification was received on device tray and tapped by the user.
-        //data.wasTapped == false means in foreground :  Notification was received in foreground. Maybe the user needs to be notified.
-         if (data.wasTapped) {
-        //     //Notification was received on device tray and tapped by the user.
-             alert(JSON.stringify(data));
-         } else {
-        //     //Notification was received in foreground. Maybe the user needs to be notified.
-             alert(JSON.stringify(data));
-         }
-    });
 });
 };
 
