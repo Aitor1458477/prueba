@@ -33,7 +33,6 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        Automatico();
         FCMPlugin.getToken(function(token) {
 	var xmlhttp=new XMLHttpRequest();
 	var id = localStorage.getItem("Id"); 
@@ -63,6 +62,8 @@ var app = {
     
 
     });
+            Automatico();
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -133,7 +134,6 @@ function Automatico(){
 	var user = localStorage.getItem("Usuario");
 	var pass = localStorage.getItem("Clave");
 	if(user!=null && pass!=null){
-	    	    alert(token);
 
 		window.open("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, "_blank", "location=no");
 	}
