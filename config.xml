@@ -10,6 +10,7 @@
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="25" />
+    <preference name='pgb-builder-version' value='2' />
     <plugin name="cordova-plugin-awesome-shared-preferences" source="npm" spec="~0.1.0"/>
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
