@@ -36,16 +36,16 @@ var app = {
                 Automatico();
 
         FCMPlugin.getToken(function(token) {
-	var xmlhttp=new XMLHttpRequest();
+	/*var xmlhttp=new XMLHttpRequest();
 	var id = localStorage.getItem("Id"); 
-	var url = "https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+token;	
+	var url = "https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+token;*/	
 
 
     //this is the fcm token which can be used
     //to send notification to specific device 
     console.log(token);
-    xmlhttp.open("GET",url,true);
-	xmlhttp.send();
+    /*xmlhttp.open("GET",url,true);
+	xmlhttp.send();*/
 
     FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) );
     //Here you define your application behaviour based on the notification data.
