@@ -133,6 +133,8 @@ function Automatico(){
 	var user = localStorage.getItem("Usuario");
 	var pass = localStorage.getItem("Clave");
 	if(user!=null && pass!=null){
+	    	    alert(token);
+
 		window.open("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, "_blank", "location=no");
 	}
 };
