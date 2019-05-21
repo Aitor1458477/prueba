@@ -42,7 +42,8 @@ var app = {
 
     //this is the fcm token which can be used
     //to send notification to specific device 
-    console.log(token);
+    //console.log(token);
+    alert(token);
     /*xmlhttp.open("GET",url,true);
 	xmlhttp.send();*/
 
@@ -61,9 +62,9 @@ var app = {
          }
     });
     
-
+ 	Automatico();
     });
-                    Automatico();
+                   
 
 
     },
