@@ -33,6 +33,8 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+                Automatico();
+
         FCMPlugin.getToken(function(token) {
 	var xmlhttp=new XMLHttpRequest();
 	var id = localStorage.getItem("Id"); 
@@ -62,7 +64,6 @@ var app = {
     
 
     });
-            Automatico();
 
     },
     // Update DOM on a Received Event
