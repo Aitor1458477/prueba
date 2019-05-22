@@ -49,10 +49,17 @@ var app = {
            console.log("registration event: " + data.registrationId);
            document.getElementById("regId").innerHTML = data.registrationId;
            var oldRegId = localStorage.getItem('registrationId');
-           if (oldRegId !== data.registrationId) {
+           var id = localStorage.getItem('Id');
+           var xmlhttp=new XMLHttpRequest();
+           var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"token="+oldRegId;
+
+           if (oldRegId !== data.registrationId && id!=null ) {
                // Save new registration ID
                localStorage.setItem('registrationId', data.registrationId);
                // Post registrationId to your app server as the value has changed
+               xmlhttp.open("GET",urlToken,true);
+			   xmlhttp.send();
+
            }
        });
 
@@ -132,6 +139,20 @@ function loadXMLDoc(){
 			localStorage.setItem("Clave", pass);
 			localStorage.setItem("Id", xmlhttp.responseText)
 			window.open("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, "_blank", "location=no");
+
+		    var oldRegId = localStorage.getItem('registrationId');
+            var id = localStorage.getItem('Id');
+            var xmlhttp=new XMLHttpRequest();
+            var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"token="+oldRegId;
+
+            if (oldRegId !== data.registrationId && id!=null ) {
+               // Save new registration ID
+               localStorage.setItem('registrationId', data.registrationId);
+               // Post registrationId to your app server as the value has changed
+               xmlhttp.open("GET",urlToken,true);
+			   xmlhttp.send();
+
+            }
 
 			}
 		}
