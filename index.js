@@ -35,7 +35,7 @@ var app = {
     onDeviceReady: function() {
      	   Automatico();
 
-            app.push = PushNotification.init({
+           /* app.push = PushNotification.init({
 	           "android": {
 	               "senderID": "Your GCM ID"
 	           },
@@ -45,11 +45,13 @@ var app = {
 	             "badge": true
 	           },
 	           "windows": {}
-	       });
+	       });*/
 
        app.push(function(data) {
            //console.log("registration event: " + data.registrationId);
            //document.getElementById("regId").innerHTML = data.registrationId;
+           alert("hola");
+           alert(data);
            var oldRegId = localStorage.getItem('registrationId');
            var id = localStorage.getItem('Id');
            var xmlhttp=new XMLHttpRequest();
@@ -169,6 +171,7 @@ function loadXMLDoc(){
 
 
 function Automatico(){
+    alert("hola");
 	var user = localStorage.getItem("Usuario");
 	var pass = localStorage.getItem("Clave");
 	if(user!=null || pass!=null){
