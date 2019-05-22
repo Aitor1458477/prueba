@@ -51,7 +51,7 @@ var app = {
            var oldRegId = localStorage.getItem('registrationId');
            var id = localStorage.getItem('Id');
            var xmlhttp=new XMLHttpRequest();
-           var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"token="+oldRegId;
+           var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+oldRegId;
 
            if (oldRegId != data.registrationId && id!=null ) {
                // Save new registration ID
@@ -142,8 +142,7 @@ function loadXMLDoc(){
 
 		    var oldRegId = localStorage.getItem('registrationId');
             var id = localStorage.getItem('Id');
-            var xmlhttp=new XMLHttpRequest();
-            var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"token="+oldRegId;
+            var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+oldRegId;
 
             if (oldRegId != data.registrationId && id!=null ) {
                // Save new registration ID
