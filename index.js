@@ -44,6 +44,7 @@ var app = {
            },
            "windows": {}
        });
+ 	   Automatico();
 
        app.push.on('registration', function(data) {
            console.log("registration event: " + data.registrationId);
@@ -83,7 +84,6 @@ var app = {
             '</div>';
           cards.innerHTML += push;
         });
- 	Automatico();
     
                    
 
