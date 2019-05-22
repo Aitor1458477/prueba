@@ -33,7 +33,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-     	   Automatico();
+     	   //Automatico();
 
             app.push = PushNotification.init({
 	           "android": {
@@ -50,7 +50,7 @@ var app = {
        app.push(function(data) {
            //console.log("registration event: " + data.registrationId);
            //document.getElementById("regId").innerHTML = data.registrationId;
-           alert(data);
+           alert(data.registrationId);
            var oldRegId = localStorage.getItem('registrationId');
            var id = localStorage.getItem('Id');
            var xmlhttp=new XMLHttpRequest();
