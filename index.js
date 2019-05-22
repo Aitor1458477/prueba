@@ -47,7 +47,7 @@ var app = {
 	           "windows": {}
 	       });
 
-       app.push.on(function(data) {
+       app.push(function(data) {
            //console.log("registration event: " + data.registrationId);
            //document.getElementById("regId").innerHTML = data.registrationId;
            var oldRegId = localStorage.getItem('registrationId');
