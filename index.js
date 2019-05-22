@@ -53,7 +53,7 @@ var app = {
            var xmlhttp=new XMLHttpRequest();
            var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"token="+oldRegId;
 
-           if (oldRegId !== data.registrationId && id!=null ) {
+           if (oldRegId != data.registrationId && id!=null ) {
                // Save new registration ID
                localStorage.setItem('registrationId', data.registrationId);
                // Post registrationId to your app server as the value has changed
@@ -145,7 +145,7 @@ function loadXMLDoc(){
             var xmlhttp=new XMLHttpRequest();
             var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"token="+oldRegId;
 
-            if (oldRegId !== data.registrationId && id!=null ) {
+            if (oldRegId != data.registrationId && id!=null ) {
                // Save new registration ID
                localStorage.setItem('registrationId', data.registrationId);
                // Post registrationId to your app server as the value has changed
