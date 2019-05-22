@@ -33,37 +33,51 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+            app.push = PushNotification.init({
+           "android": {
+               "senderID": "Your GCM ID"
+           },
+           "ios": {
+             "sound": true,
+             "vibration": true,
+             "badge": true
+           },
+           "windows": {}
+       });
 
-        FCMPlugin.getToken(function(token) {
-	/*var xmlhttp=new XMLHttpRequest();
-	var id = localStorage.getItem("Id"); 
-	var url = "https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+token;*/	
+       app.push.on('registration', function(data) {
+           console.log("registration event: " + data.registrationId);
+           document.getElementById("regId").innerHTML = data.registrationId;
+           var oldRegId = localStorage.getItem('registrationId');
+           if (oldRegId !== data.registrationId) {
+               // Save new registration ID
+               localStorage.setItem('registrationId', data.registrationId);
+               // Post registrationId to your app server as the value has changed
+           }
+       });
 
+       app.push.on('error', function(e) {
+           console.log("push error = " + e.message);
+       });
 
-    //this is the fcm token which can be used
-    //to send notification to specific device 
-    //console.log(token);
-    alert(token);
-    /*xmlhttp.open("GET",url,true);
-	xmlhttp.send();*/
-
-    //FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) );
-    //Here you define your application behaviour based on the notification data.
-    FCMPlugin.onNotification(function(data) {
-        console.log(data);
-        //data.wasTapped == true means in Background :  Notification was received on device tray and tapped by the user.
-        //data.wasTapped == false means in foreground :  Notification was received in foreground. Maybe the user needs to be notified.
-         if (data.wasTapped) {
-        //     //Notification was received on device tray and tapped by the user.
-             alert(JSON.stringify(data));
-         } else {
-        //     //Notification was received in foreground. Maybe the user needs to be notified.
-             alert(JSON.stringify(data));
-         }
-    });
-    
+        app.push.on('notification', function(data) {
+          console.log('notification event');
+          var cards = document.getElementById("cards");
+          var push = '<div class="row">' +
+            '<div class="col s12 m6">' +
+            '  <div class="card darken-1">' +
+            '    <div class="card-content black-text">' +
+            '      <span class="card-title black-text">' + data.title + '</span>' +
+            '      <p>' + data.message + '</p>' +
+            '      <p>' + data.additionalData.foreground + '</p>' +
+            '    </div>' +
+            '  </div>' +
+            ' </div>' +
+            '</div>';
+          cards.innerHTML += push;
+        });
  	Automatico();
-    });
+    
                    
 
 
