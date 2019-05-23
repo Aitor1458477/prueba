@@ -33,7 +33,64 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+     	   //Automatico();
+
+            app.push = PushNotification.init({
+	           "android": {
+	               "senderID": "Your GCM ID"
+	           },
+	           "ios": {
+	             "sound": true,
+	             "vibration": true,
+	             "badge": true
+	           },
+	           "windows": {}
+	       });
+
+       app.push.on('deviceready',function(data) {
+           //console.log("registration event: " + data.registrationId);
+           //document.getElementById("regId").innerHTML = data.registrationId;
+           alert("hola");
+           alert(data.registrationId);
+           var oldRegId = localStorage.getItem('registrationId');
+           var id = localStorage.getItem('Id');
+           var xmlhttp=new XMLHttpRequest();
+           var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+oldRegId;
+
+           if (oldRegId != data.registrationId || id!=null ) {
+               // Save new registration ID
+               localStorage.setItem('registrationId', data.registrationId);
+               // Post registrationId to your app server as the value has changed
+               xmlhttp.open("GET",urlToken,true);
+			   xmlhttp.send();
+
+           }
+       });
+
+       app.push.on('error', function(e) {
+           console.log("push error = " + e.message);
+       });
+
+        app.push.on('notification', function(data) {
+          console.log('notification event');
+          var cards = document.getElementById("cards");
+          var push = '<div class="row">' +
+            '<div class="col s12 m6">' +
+            '  <div class="card darken-1">' +
+            '    <div class="card-content black-text">' +
+            '      <span class="card-title black-text">' + data.title + '</span>' +
+            '      <p>' + data.message + '</p>' +
+            '      <p>' + data.additionalData.foreground + '</p>' +
+            '    </div>' +
+            '  </div>' +
+            ' </div>' +
+            '</div>';
+          cards.innerHTML += push;
+        });
+    
+                   
+
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -83,8 +140,21 @@ function loadXMLDoc(){
 			//sharedPreferences.put('Id', xmlhttp.responseText, succesCallback, errorCallback);
 			localStorage.setItem("Usuario", user);
 			localStorage.setItem("Clave", pass);
-			//loadHTML("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass,10000);
-			//navigator.app.loadUrl("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, { openExternal:true });
+			localStorage.setItem("Id", xmlhttp.responseText)
+			window.open("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, "_blank", "location=no");
+
+		    var oldRegId = localStorage.getItem('registrationId');
+            var id = localStorage.getItem('Id');
+            var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+oldRegId;
+
+            if (oldRegId != data.registrationId || id!=null ) {
+               // Save new registration ID
+               localStorage.setItem('registrationId', data.registrationId);
+               // Post registrationId to your app server as the value has changed
+               xmlhttp.open("GET",urlToken,true);
+			   xmlhttp.send();
+
+            }
 
 			}
 		}
@@ -92,46 +162,23 @@ function loadXMLDoc(){
 
 
 	//1 - Envio de la llamada
-	var user = localStorage.getItem("Usuario");//document.getElementById("User").value;
-	var pass = localStorage.getItem("Clave");//document.getElementById("Pass").value;
+	var user = document.getElementById("User").value;
+	var pass = document.getElementById("Pass").value;
 	var url = "http://siesoluciones.com/funcionesPHP/funcionesAndroid.php?login=1&usuario=" + user + "&clave=" + pass;	
 	xmlhttp.open("GET",url,true);
 	xmlhttp.send();
 };
 
-function loadHTML(url, timeout) {
-if (timeout == undefined)
-    timeout = 10000;
-var req = new XMLHttpRequest();
-var timer = setTimeout(function() {
-    try {
-        req.abort();
-    } catch(e) {}
-    navigator.notification.loadingStop();
-},timeout);
-req.onreadystatechange = function() {
-    if (req.readyState == 4) {
-        if (req.status < 300) {
-            clearTimeout(timer);
 
-            var html = req.responseText;
-            //just a debug print   
-    alert(html);
-    document.write(html);
+function Automatico(){
+    alert("hola");
+	var user = localStorage.getItem("Usuario");
+	var pass = localStorage.getItem("Clave");
+	if(user!=null || pass!=null){
 
-        }
-        navigator.notification.loadingStop();
-        delete req;
-    }       
-};          
-req.open('GET', url, true);
-req.send();
+		window.open("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, "_blank", "location=no");
+	}
 };
-
-function Cambiar(){
-document.getElementById("btn").setAttribute("disabled", "true");
-
-}
 
 
 
