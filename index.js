@@ -198,6 +198,7 @@ function Automatico(){
 			   xmlhttp.send();
 
            }
+      });
 
 };
 
