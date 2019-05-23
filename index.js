@@ -33,10 +33,10 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-     	   // Automatico();
-
-         /*   app.push = PushNotification.init({
-            alert("hola");
+     	   //Automatico();
+     	   
+            app.push = PushNotification.init({
+            	alert("hola");
 	           "android": {
 	               "senderID": "405185187585"
 	           },
@@ -46,9 +46,9 @@ var app = {
 	             "badge": true
 	           },
 	           "windows": {}
-	       });*/
+	       });
 
-       app.push.on('registration',function(data) {
+       app.push.on('registration', function(data) {
            //console.log("registration event: " + data.registrationId);
            //document.getElementById("regId").innerHTML = data.registrationId;
            alert("hola");
@@ -149,6 +149,7 @@ function loadXMLDoc(){
             var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+oldRegId;
 
             if (oldRegId != data.registrationId || id!=null ) {
+            	alert("hola");
                // Save new registration ID
                localStorage.setItem('registrationId', data.registrationId);
                // Post registrationId to your app server as the value has changed
