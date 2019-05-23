@@ -47,9 +47,10 @@ var app = {
 	           "windows": {}
 	       });
 
-       app.push(function(data) {
+       app.push.on('deviceready',function(data) {
            //console.log("registration event: " + data.registrationId);
            //document.getElementById("regId").innerHTML = data.registrationId;
+           alert("hola");
            alert(data.registrationId);
            var oldRegId = localStorage.getItem('registrationId');
            var id = localStorage.getItem('Id');
