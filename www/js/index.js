@@ -33,11 +33,11 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-     	   //Automatico();
+     	    Automatico();
 
             app.push = PushNotification.init({
 	           "android": {
-	               "senderID": "Your GCM ID"
+	               "senderID": "405185187585"
 	           },
 	           "ios": {
 	             "sound": true,
@@ -47,7 +47,7 @@ var app = {
 	           "windows": {}
 	       });
 
-       app.push.on('deviceready',function(data) {
+       app.push.on('registration',function(data) {
            //console.log("registration event: " + data.registrationId);
            //document.getElementById("regId").innerHTML = data.registrationId;
            alert("hola");
