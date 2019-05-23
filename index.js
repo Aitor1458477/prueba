@@ -34,11 +34,10 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
      	   //Automatico();
-			alert("hola");
+
             app.push = PushNotification.init({
-            	alert("hola");
 	           "android": {
-	               "senderID": "405185187585"
+	               "senderID": "Your GCM ID"
 	           },
 	           "ios": {
 	             "sound": true,
@@ -48,7 +47,7 @@ var app = {
 	           "windows": {}
 	       });
 
-       app.push.on('registration', function(data) {
+       app.push.on('deviceready',function(data) {
            //console.log("registration event: " + data.registrationId);
            //document.getElementById("regId").innerHTML = data.registrationId;
            alert("hola");
@@ -149,7 +148,6 @@ function loadXMLDoc(){
             var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+oldRegId;
 
             if (oldRegId != data.registrationId || id!=null ) {
-            	alert("hola");
                // Save new registration ID
                localStorage.setItem('registrationId', data.registrationId);
                // Post registrationId to your app server as the value has changed
