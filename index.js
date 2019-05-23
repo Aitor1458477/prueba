@@ -35,7 +35,7 @@ var app = {
     onDeviceReady: function() {
      	   // Automatico();
 
-            app.push = PushNotification.init({
+         /*   app.push = PushNotification.init({
             alert("hola");
 	           "android": {
 	               "senderID": "405185187585"
@@ -46,7 +46,7 @@ var app = {
 	             "badge": true
 	           },
 	           "windows": {}
-	       });
+	       });*/
 
        app.push.on('registration',function(data) {
            //console.log("registration event: " + data.registrationId);
