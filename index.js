@@ -37,7 +37,7 @@ var app = {
 
             app.push = PushNotification.init({
 	           "android": {
-	               "senderID": "Your GCM ID"
+	               "senderID": "405185187585"
 	           },
 	           "ios": {
 	             "sound": true,
@@ -47,7 +47,7 @@ var app = {
 	           "windows": {}
 	       });
 
-       app.push.on('deviceready',function(data) {
+       app.push.on('deviceready', function(data) {
            //console.log("registration event: " + data.registrationId);
            //document.getElementById("regId").innerHTML = data.registrationId;
            alert("hola");
