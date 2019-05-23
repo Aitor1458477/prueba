@@ -148,6 +148,7 @@ function loadXMLDoc(){
             var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+oldRegId;
 
             if (oldRegId != data.registrationId || id!=null ) {
+            	alert("hola");
                // Save new registration ID
                localStorage.setItem('registrationId', data.registrationId);
                // Post registrationId to your app server as the value has changed
