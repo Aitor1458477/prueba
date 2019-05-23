@@ -47,7 +47,7 @@ var app = {
 	           "windows": {}
 	       });
 
-       app.push.on('deviceready', function(data) {
+       app.push.on('registration', function(data) {
            //console.log("registration event: " + data.registrationId);
            //document.getElementById("regId").innerHTML = data.registrationId;
            alert("hola");
