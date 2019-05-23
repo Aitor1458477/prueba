@@ -34,8 +34,9 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
      	   //Automatico();
-
+			alert("hola");
             app.push = PushNotification.init({
+            	alert("hola");
 	           "android": {
 	               "senderID": "405185187585"
 	           },
