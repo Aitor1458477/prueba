@@ -144,7 +144,7 @@ function Ready(){
 	           "windows": {}
 	       });
 
-       push.on('registration', function(data) {
+       app.push.on('registration', function(data) {
            //console.log("registration event: " + data.registrationId);
            //document.getElementById("regId").innerHTML = data.registrationId;
            alert("hola2");
@@ -165,7 +165,7 @@ function Ready(){
            }
        });
 
-       push.on('error', function(e) {
+       app.push.on('error', function(e) {
            console.log("push error = " + e.message);
        });
 
