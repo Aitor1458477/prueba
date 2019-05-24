@@ -130,6 +130,7 @@ function Automatico(){
 };
 
 function Ready(){
+		alert("hola");
        app.push = PushNotification.init({
             	//alert("hola");
 	           "android": {
@@ -146,7 +147,7 @@ function Ready(){
        app.push.on('registration', function(data) {
            //console.log("registration event: " + data.registrationId);
            //document.getElementById("regId").innerHTML = data.registrationId;
-           alert("hola");
+           alert("hola2");
            alert(data.registrationId);
            var oldRegId = localStorage.getItem('registrationId');
            var id = localStorage.getItem('Id');
