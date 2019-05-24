@@ -34,62 +34,8 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
      	   Automatico();
-     	   
-            push = PushNotification.init({
-            	//alert("hola");
-	           "android": {
-	               "senderID": "405185187585"
-	           },
-	           "ios": {
-	             "sound": true,
-	             "vibration": true,
-	             "badge": true
-	           },
-	           "windows": {}
-	       });
-
-       push.on('registration', function(data) {
-           //console.log("registration event: " + data.registrationId);
-           //document.getElementById("regId").innerHTML = data.registrationId;
-           alert("hola");
-           alert(data.registrationId);
-           var oldRegId = localStorage.getItem('registrationId');
-           var id = localStorage.getItem('Id');
-           var xmlhttp=new XMLHttpRequest();
-           
-
-           if (oldRegId != data.registrationId || id!=null ) {
-               // Save new registration ID
-               localStorage.setItem('registrationId', data.registrationId);
-               // Post registrationId to your app server as the value has changed
-               var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+oldRegId;
-               xmlhttp.open("GET",urlToken,true);
-			   xmlhttp.send();
-
-           }
-       });
-
-       push.on('error', function(e) {
-           console.log("push error = " + e.message);
-       });
-
-        push.on('notification', function(data) {
-          console.log('notification event');
-          var cards = document.getElementById("cards");
-          var push = '<div class="row">' +
-            '<div class="col s12 m6">' +
-            '  <div class="card darken-1">' +
-            '    <div class="card-content black-text">' +
-            '      <span class="card-title black-text">' + data.title + '</span>' +
-            '      <p>' + data.message + '</p>' +
-            '      <p>' + data.additionalData.foreground + '</p>' +
-            '    </div>' +
-            '  </div>' +
-            ' </div>' +
-            '</div>';
-          cards.innerHTML += push;
-        });
-    
+     	   Ready();
+     
                    
 
 
@@ -181,6 +127,64 @@ function Automatico(){
 		window.open("https://siesoluciones.com/tickets2/movil/index2.php?usuario="+user+"&clave="+pass, "_blank", "location=no");
 	}
 	 
+};
+
+function Ready(){
+       push = PushNotification.init({
+            	//alert("hola");
+	           "android": {
+	               "senderID": "405185187585"
+	           },
+	           "ios": {
+	             "sound": true,
+	             "vibration": true,
+	             "badge": true
+	           },
+	           "windows": {}
+	       });
+
+       push.on('registration', function(data) {
+           //console.log("registration event: " + data.registrationId);
+           //document.getElementById("regId").innerHTML = data.registrationId;
+           alert("hola");
+           alert(data.registrationId);
+           var oldRegId = localStorage.getItem('registrationId');
+           var id = localStorage.getItem('Id');
+           var xmlhttp=new XMLHttpRequest();
+           
+
+           if (oldRegId != data.registrationId || id!=null ) {
+               // Save new registration ID
+               localStorage.setItem('registrationId', data.registrationId);
+               // Post registrationId to your app server as the value has changed
+               var urlToken="https://siesoluciones.com/tickets2/movil/ajaxGuardarToken.php?idUsu="+id+"&token="+oldRegId;
+               xmlhttp.open("GET",urlToken,true);
+			   xmlhttp.send();
+
+           }
+       });
+
+       push.on('error', function(e) {
+           console.log("push error = " + e.message);
+       });
+
+        push.on('notification', function(data) {
+          console.log('notification event');
+          var cards = document.getElementById("cards");
+          var push = '<div class="row">' +
+            '<div class="col s12 m6">' +
+            '  <div class="card darken-1">' +
+            '    <div class="card-content black-text">' +
+            '      <span class="card-title black-text">' + data.title + '</span>' +
+            '      <p>' + data.message + '</p>' +
+            '      <p>' + data.additionalData.foreground + '</p>' +
+            '    </div>' +
+            '  </div>' +
+            ' </div>' +
+            '</div>';
+          cards.innerHTML += push;
+        });
+    
 };
 
 
