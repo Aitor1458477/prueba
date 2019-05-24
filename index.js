@@ -39,7 +39,7 @@ var app = {
      	   
     },
     
-    setupPush: function(){
+    setupPush: function() {
     
     	var push = PushNotification.init({
             	
