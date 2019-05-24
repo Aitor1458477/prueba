@@ -174,7 +174,7 @@ function loadXMLDoc(){
 
 
 function Automatico(){
-if(true||false)
+if(true && false)
 {alert("hola");}
 	var user = localStorage.getItem("Usuario");
 	var pass = localStorage.getItem("Clave");
