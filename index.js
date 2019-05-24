@@ -130,7 +130,7 @@ function Automatico(){
 };
 
 function Ready(){
-       push = PushNotification.init({
+       app.push = PushNotification.init({
             	//alert("hola");
 	           "android": {
 	               "senderID": "405185187585"
@@ -143,7 +143,7 @@ function Ready(){
 	           "windows": {}
 	       });
 
-       push.on('registration', function(data) {
+       app.push.on('registration', function(data) {
            //console.log("registration event: " + data.registrationId);
            //document.getElementById("regId").innerHTML = data.registrationId;
            alert("hola");
@@ -164,11 +164,11 @@ function Ready(){
            }
        });
 
-       push.on('error', function(e) {
+       app.push.on('error', function(e) {
            console.log("push error = " + e.message);
        });
 
-        push.on('notification', function(data) {
+        app.push.on('notification', function(data) {
           console.log('notification event');
           var cards = document.getElementById("cards");
           var push = '<div class="row">' +
