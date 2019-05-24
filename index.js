@@ -38,6 +38,7 @@ var app = {
      	   app.setupPush();    	   
      	   
     },
+    
     setupPush: function(){
     
     	var push = PushNotification.init({
