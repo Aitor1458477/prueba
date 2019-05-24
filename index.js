@@ -46,6 +46,7 @@ var app = {
 	               "senderID": "405185187585"
 	           },
 	           "ios": {
+	             "alert": true,
 	             "sound": true,
 	             "vibration": true,
 	             "badge": true
@@ -78,7 +79,7 @@ var app = {
            console.log("push error = " + e.message);
        });
 
-        push.on('notification', function(data) {
+        /*push.on('notification', function(data) {
           console.log('notification event');
           var cards = document.getElementById("cards");
           var push = '<div class="row">' +
@@ -93,7 +94,7 @@ var app = {
             ' </div>' +
             '</div>';
           cards.innerHTML += push;
-        });
+        });*/
      
                    
 
@@ -108,7 +109,7 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    },
+    }
     
     
     
@@ -187,11 +188,6 @@ function Automatico(){
 	 
 };
 
-function Ready(){
-		alert("hola");
-      
-    
-};
 
 
 
