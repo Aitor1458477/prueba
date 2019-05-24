@@ -35,7 +35,7 @@ var app = {
     onDeviceReady: function() {
      	   Automatico();
      	   
-            app.push = PushNotification.init({
+            push = PushNotification.init({
             	//alert("hola");
 	           "android": {
 	               "senderID": "405185187585"
@@ -48,7 +48,7 @@ var app = {
 	           "windows": {}
 	       });
 
-       app.push.on('registration', function(data) {
+       push.on('registration', function(data) {
            //console.log("registration event: " + data.registrationId);
            //document.getElementById("regId").innerHTML = data.registrationId;
            alert("hola");
@@ -69,11 +69,11 @@ var app = {
            }
        });
 
-       app.push.on('error', function(e) {
+       push.on('error', function(e) {
            console.log("push error = " + e.message);
        });
 
-        app.push.on('notification', function(data) {
+        push.on('notification', function(data) {
           console.log('notification event');
           var cards = document.getElementById("cards");
           var push = '<div class="row">' +
@@ -174,8 +174,6 @@ function loadXMLDoc(){
 
 
 function Automatico(){
-if(true && false)
-{alert("hola");}
 	var user = localStorage.getItem("Usuario");
 	var pass = localStorage.getItem("Clave");
 	if(user!=null || pass!=null){
