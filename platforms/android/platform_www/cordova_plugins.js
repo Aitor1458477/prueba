@@ -414,6 +414,14 @@ module.exports = [
     "clobbers": [
       "FCMPlugin"
     ]
+  },
+  {
+    "id": "cordova-plugin-awesome-shared-preferences.SharedPreferences",
+    "file": "plugins/cordova-plugin-awesome-shared-preferences/www/index.js",
+    "pluginId": "cordova-plugin-awesome-shared-preferences",
+    "clobbers": [
+      "window.plugins.SharedPreferences"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -434,7 +442,8 @@ module.exports.metadata =
   "cordova-support-google-services": "1.1.0",
   "phonegap-plugin-multidex": "1.0.0",
   "phonegap-plugin-push": "2.2.3",
-  "cordova-plugin-fcm": "2.1.2"
+  "cordova-plugin-fcm": "2.1.2",
+  "cordova-plugin-awesome-shared-preferences": "0.1.0"
 };
 // BOTTOM OF METADATA
 });
